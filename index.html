@@ -7,8 +7,9 @@
 <style>
   :root { --bg:#ffffff; --fg:#1c1c1e; --muted:#5b5b61; --line:#e2e2e6; --accent:#2457d6; }
   @media (prefers-color-scheme: dark) {
-    :root { --bg:#111214; --fg:#ececef; --muted:#a0a0a8; --line:#2a2b30; --accent:#7ea2ff; }
+    :root:not([data-theme="light"]) { --bg:#111214; --fg:#ececef; --muted:#a0a0a8; --line:#2a2b30; --accent:#7ea2ff; }
   }
+  :root[data-theme="dark"] { --bg:#111214; --fg:#ececef; --muted:#a0a0a8; --line:#2a2b30; --accent:#7ea2ff; }
   body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
   main { max-width:760px; margin:0 auto; padding:32px 16px 64px; }
   h1 { font-size:1.8rem; margin:0 0 4px; }
@@ -20,68 +21,91 @@
   table { border-collapse:collapse; width:100%; margin:8px 0; font-size:.95rem; }
   th, td { text-align:left; vertical-align:top; padding:8px 10px; border:1px solid var(--line); }
   th { background:rgba(127,127,127,.08); }
+  @media (max-width:560px) { table, thead, tbody, tr, th, td { display:block; width:100%; } th { display:none; } td { border:none; padding:4px 0; } tr { border:1px solid var(--line); padding:8px; margin-bottom:10px; display:block; } td + td { border-top:1px dashed var(--line); padding-top:6px; } }
 </style>
 </head>
 <body>
 <main>
 <h1>Politique de confidentialité</h1>
-<p class="muted">Application « Tivixx Player » (Android) – dernière mise à jour : 21 novembre 2026</p>
+<p class="muted">Application Android « Tivixx Player » – dernière mise à jour : 22 novembre 2026</p>
 
-<h2>1. Qui sommes-nous</h2>
-<p>L'application Tivixx Player est éditée par <strong>Makdoud Hakim</strong>, responsable du traitement des données décrites ci-dessous.
-Contact pour toute question relative à vos données : <a href="mailto:spootkim@gmail.com">spootkim@gmail.com</a>.</p>
+<h2>1. Responsable du traitement</h2>
+<p>Le responsable du traitement des données décrites dans cette politique est <strong>Makdoud Hakim</strong>, éditeur de l'application Tivixx Player.<br>
+Contact : <a href="mailto:spootkim@gmail.com">spootkim@gmail.com</a>.</p>
 
-<h2>2. Ce que fait l'application</h2>
-<p>Tivixx Player est un lecteur vidéo. Il lit les flux et les listes que <strong>vous</strong> ajoutez vous-même. L'application ne fournit, n'héberge et ne vend aucun contenu audiovisuel. Vous restez responsable des sources que vous utilisez.</p>
+<h2>2. Présentation du service</h2>
+<p>Tivixx Player est un lecteur vidéo. Il lit les flux, listes et fichiers que <strong>vous</strong> ajoutez. L'application ne fournit, n'héberge, ne vend et ne recommande aucun contenu audiovisuel, et aucun contenu n'est préinstallé. Vous êtes responsable des sources que vous utilisez.</p>
 
 <h2>3. Données que nous traitons</h2>
+<p>Le tableau ci-dessous indique les données traitées, leur finalité et l'endroit où elles sont conservées.</p>
 <table>
-  <tr><th>Donnée</th><th>Pourquoi</th><th>Où</th></tr>
-  <tr><td>Adresse e-mail et mot de passe de votre compte Tivixx (le mot de passe n'est jamais conservé en clair : seule une empreinte est stockée)</td><td>Créer et sécuriser votre compte, vous connecter</td><td>Serveur Tivixx</td></tr>
-  <tr><td>Informations d'abonnement : identifiant du produit, jeton d'achat Google Play, statut et date d'expiration</td><td>Vérifier et activer votre abonnement acheté via Google Play</td><td>Serveur Tivixx</td></tr>
-  <tr><td>Codes d'accès à vos propres sources (Xtream) que vous choisissez d'enregistrer dans votre compte</td><td>Les retrouver sur vos appareils. Ils sont stockés <strong>chiffrés</strong> (AES-256-GCM)</td><td>Serveur Tivixx</td></tr>
-  <tr><td>Profils (noms et préférences)</td><td>Retrouver vos profils sur vos appareils</td><td>Serveur Tivixx</td></tr>
-  <tr><td>Signalements de problèmes que vous envoyez volontairement</td><td>Corriger les bogues</td><td>Serveur Tivixx</td></tr>
-  <tr><td>Favoris, positions de lecture, réglages, listes enregistrées sur l'appareil</td><td>Faire fonctionner l'application</td><td>Votre appareil uniquement</td></tr>
-  <tr><td>Données techniques de connexion (par exemple adresse IP) traitées par notre hébergeur</td><td>Sécurité, limitation des abus, fonctionnement du service</td><td>Hébergeur</td></tr>
+  <tr><th>Donnée</th><th>Finalité</th><th>Où elle est conservée</th></tr>
+  <tr><td>Adresse e-mail du compte, et mot de passe sous forme d'empreinte (bcrypt). Le mot de passe n'est jamais conservé en clair.</td><td>Créer le compte, vous connecter, sécuriser l'accès</td><td>Serveur Tivixx</td></tr>
+  <tr><td>Codes d'accès à vos sources (serveur, identifiant, mot de passe), <strong>chiffrés</strong> (AES-256-GCM), uniquement si vous choisissez de les enregistrer dans votre compte</td><td>Les retrouver sur vos appareils</td><td>Serveur Tivixx</td></tr>
+  <tr><td>Profils (nom, avatar, préférences et référence à vos codes d'accès, sans les codes eux-mêmes)</td><td>Retrouver vos profils sur vos appareils</td><td>Serveur Tivixx</td></tr>
+  <tr><td>Informations d'abonnement : identifiant du produit, statut, date d'expiration et jeton d'achat Google Play</td><td>Vérifier et activer une offre payante</td><td>Serveur Tivixx</td></tr>
+  <tr><td>Rapports d'erreur : message, trace technique, version de l'application, caractéristiques techniques de l'appareil (modèle, version du système) et, si vous êtes connecté, l'identifiant de votre compte</td><td>Corriger les bogues</td><td>Serveur Tivixx (conservés 180 jours maximum)</td></tr>
+  <tr><td>Journaux techniques : adresse IP <strong>tronquée</strong> (réseau /24 pour IPv4, /48 pour IPv6), événement (connexion, erreur)</td><td>Sécurité, prévention des abus, dépannage</td><td>Serveur Tivixx, durée limitée au strict nécessaire</td></tr>
+  <tr><td>Favoris, historique et positions de lecture, réglages, temps de visionnage</td><td>Faire fonctionner l'application</td><td>Votre appareil uniquement, jamais envoyés à nos serveurs</td></tr>
 </table>
-<p>Vous pouvez aussi utiliser l'application en <strong>mode invité</strong> : dans ce cas, aucun compte n'est créé.</p>
+<p>Vous pouvez utiliser l'application en <strong>mode invité</strong> : aucun compte n'est créé et seules les données locales ci-dessus sont utilisées.</p>
 
 <h2>4. Autorisations demandées sur l'appareil</h2>
 <ul>
-  <li><strong>Internet / état du réseau</strong> : lire vos flux et communiquer avec le serveur Tivixx.</li>
-  <li><strong>Caméra</strong> : scanner un QR code pour vous connecter. Aucune image n'est conservée ni envoyée.</li>
-  <li><strong>Notifications</strong> : afficher l'état d'une capture ou d'une lecture.</li>
-  <li><strong>Vidéos de l'appareil</strong> : lire des fichiers vidéo locaux que vous choisissez. Ces fichiers ne sont jamais envoyés.</li>
-  <li><strong>Service de premier plan</strong> : garder une capture « téléchargement » active quand vous passez à une autre application, avec une notification visible.</li>
-  <li><strong>Réseau local (Wi-Fi)</strong> : détecter les appareils compatibles Cast ou DLNA.</li>
+  <li><strong>Accès à Internet et état du réseau</strong> : lire vos flux et communiquer avec le serveur Tivixx.</li>
+  <li><strong>Wi-Fi et multidiffusion</strong> : détecter les appareils compatibles Cast ou DLNA sur votre réseau local.</li>
+  <li><strong>Caméra</strong> : scanner le QR code affiché sur un autre appareil pour vous connecter. Aucune image n'est conservée ni transmise.</li>
+  <li><strong>Notifications</strong> : afficher l'état d'un téléchargement ou d'une lecture.</li>
+  <li><strong>Vidéos de l'appareil</strong> : lire les fichiers vidéo que vous choisissez. Ces fichiers ne sont jamais envoyés à nos serveurs. Demandée uniquement lorsque vous ouvrez « Vidéos du téléphone ».</li>
+  <li><strong>Service de premier plan</strong> : poursuivre un téléchargement lorsque vous utilisez une autre application, avec une notification visible.</li>
   <li><strong>Maintien de l'écran allumé</strong> : empêcher la mise en veille pendant la lecture.</li>
 </ul>
+<p>Vous pouvez retirer une autorisation à tout moment dans les réglages Android. Certaines fonctions ne seront alors plus disponibles.</p>
 
-<h2>5. Partage des données</h2>
-<p>Nous ne vendons pas vos données et ne les utilisons pas à des fins publicitaires. L'application ne contient ni publicité ni outil d'analyse ou de suivi tiers.</p>
-<p>Certaines données sont traitées par des prestataires nécessaires au service :</p>
+<h2>5. Base légale et finalités</h2>
 <ul>
-  <li><strong>Google</strong> : Google Play (installation, abonnements, paiements). Nous ne recevons pas vos données bancaires. Google Cast, si vous diffusez vers un appareil compatible.</li>
-  <li><strong>Notre hébergeur</strong> (Railway) : hébergement du serveur et de la base de données.</li>
+  <li><strong>Exécution du service</strong> (compte, synchronisation des profils et des codes, abonnement) : mesures nécessaires à la fourniture de l'application que vous utilisez.</li>
+  <li><strong>Intérêt légitime</strong> (sécurité du service, prévention des abus, correction des bogues) : traitements limités aux données techniques strictement nécessaires.</li>
+  <li><strong>Obligations légales</strong> : conservation des justificatifs d'achat lorsque la loi l'exige.</li>
 </ul>
-<p>Les flux vidéo que vous lisez proviennent de vos propres sources : leur fournisseur reçoit les requêtes de lecture et applique sa propre politique de confidentialité.</p>
 
-<h2>6. Durée de conservation</h2>
-<p>Les données de votre compte sont conservées tant que votre compte existe. Elles sont supprimées dans un délai de 30 jours après une demande de suppression, sauf obligation légale de conservation (par exemple pour les justificatifs liés aux achats).</p>
+<h2>6. Destinataires et sous-traitants</h2>
+<p>Nous ne vendons pas vos données et ne les partageons pas à des fins publicitaires. L'application ne contient aucune publicité, aucun traceur et aucun outil d'analyse d'audience.</p>
+<ul>
+  <li><strong>Railway</strong>, notre hébergeur : héberge le serveur et la base de données.</li>
+  <li><strong>Google</strong> : Google Play (installation et abonnements) et Google Cast, si vous diffusez vers un appareil compatible. Nous ne recevons jamais vos coordonnées bancaires.</li>
+</ul>
+<p>Les flux que vous lisez proviennent de vos propres sources. Leur fournisseur reçoit les requêtes de lecture et applique sa propre politique de confidentialité.</p>
 
-<h2>7. Vos droits et suppression du compte</h2>
-<p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, de portabilité et d'opposition.</p>
-<p><strong>Pour supprimer votre compte et les données associées</strong>, écrivez à <a href="mailto:spootkim@gmail.com">spootkim@gmail.com</a> depuis l'adresse de votre compte, avec pour objet « Suppression de compte Tivixx ». Nous traitons la demande dans un délai de 30 jours. La suppression du compte supprime l'abonnement associé côté serveur ; pour arrêter la facturation, annulez aussi votre abonnement dans Google Play.</p>
-<p>Vous pouvez enfin introduire une réclamation auprès de la CNIL (<a href="https://www.cnil.fr">cnil.fr</a>).</p>
+<h2>7. Durées de conservation</h2>
+<ul>
+  <li><strong>Compte, profils, codes d'accès et abonnement</strong> : pendant toute la durée de votre compte. Ils sont supprimés dès que vous supprimez le compte (voir la section 9).</li>
+  <li><strong>Rapports d'erreur</strong> : 180 jours maximum. Après la suppression de votre compte, ils ne sont plus rattachés à vous.</li>
+  <li><strong>Journaux techniques</strong> : durée limitée au strict nécessaire à la sécurité et au dépannage.</li>
+  <li><strong>Données locales</strong> : jusqu'à leur effacement dans l'application ou la désinstallation de celle-ci.</li>
+</ul>
 
-<h2>8. Sécurité</h2>
-<p>Les échanges avec le serveur sont chiffrés (HTTPS). Les mots de passe sont stockés sous forme d'empreinte. Les codes d'accès à vos sources sont chiffrés. Aucune mesure ne garantit toutefois une sécurité absolue.</p>
+<h2>8. Transferts hors Union européenne</h2>
+<p>Nos prestataires peuvent traiter certaines données hors de l'Union européenne. Dans ce cas, ils s'appuient sur les garanties prévues par le RGPD, notamment les clauses contractuelles types de la Commission européenne.</p>
 
-<h2>9. Enfants</h2>
-<p>L'application ne s'adresse pas aux enfants de moins de 15 ans et nous ne collectons pas sciemment de données les concernant.</p>
+<h2>9. Suppression de votre compte</h2>
+<p>Vous pouvez supprimer votre compte de deux façons :</p>
+<ul>
+  <li><strong>Dans l'application</strong> : Réglages → Sécurité et données → Supprimer mon compte, après saisie de votre mot de passe. La suppression est immédiate côté serveur.</li>
+  <li><strong>Par e-mail</strong> : écrivez à <a href="mailto:spootkim@gmail.com">spootkim@gmail.com</a> depuis l'adresse de votre compte, avec pour objet « Suppression de compte Tivixx ». Nous répondons dans un délai d'un mois.</li>
+</ul>
+<p>La suppression efface votre compte, votre abonnement enregistré, vos profils et vos codes d'accès. Les rapports d'erreur déjà reçus sont conservés sans lien avec votre identité. Les sauvegardes techniques de l'hébergeur sont effacées selon leur propre calendrier. <strong>La suppression du compte n'annule pas un abonnement Google Play</strong> : annulez-le dans Google Play pour arrêter la facturation.</p>
 
-<h2>10. Modifications</h2>
+<h2>10. Vos droits</h2>
+<p>Conformément au Règlement général sur la protection des données (RGPD), vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation du traitement, de portabilité et d'opposition. Pour les exercer, écrivez à <a href="mailto:spootkim@gmail.com">spootkim@gmail.com</a>. Vous pouvez aussi introduire une réclamation auprès de la Commission nationale de l'informatique et des libertés (CNIL) : <a href="https://www.cnil.fr">cnil.fr</a>.</p>
+
+<h2>11. Sécurité</h2>
+<p>Les échanges avec le serveur sont chiffrés (HTTPS). Les mots de passe sont stockés sous forme d'empreinte bcrypt, et les codes d'accès à vos sources sont chiffrés (AES-256-GCM). Les tentatives de connexion répétées sont limitées. Les adresses IP ne sont jamais conservées en entier. Aucune mesure ne garantit une sécurité absolue, mais nous limitons les données collectées à ce qui est nécessaire.</p>
+
+<h2>12. Mineurs</h2>
+<p>L'application ne s'adresse pas aux personnes de moins de 15 ans. Nous ne collectons pas sciemment de données les concernant. Si vous pensez qu'un mineur nous a transmis des données, écrivez-nous pour que nous les supprimions.</p>
+
+<h2>13. Modifications de cette politique</h2>
 <p>Nous pouvons mettre à jour cette politique. La date de dernière mise à jour figure en haut de cette page. En cas de changement important, nous vous en informerons dans l'application.</p>
 </main>
 </body>
